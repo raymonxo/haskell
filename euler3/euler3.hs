@@ -2,7 +2,7 @@
 -- Project Euler, Problem 3 (http://projecteuler.net/problem=3)
 -- Answer:  6857
 --------------------------------------------------------------------------------
--- Returns list of all prime factors of n
+-- List of all prime factors of n
 primeFactors :: Integer -> [Integer]
 primeFactors n =
 	let
