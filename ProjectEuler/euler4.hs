@@ -3,7 +3,7 @@
 -- Answer:  906609
 --------------------------------------------------------------------------------
 -- Return whether argument is a palindrome
-isPalindrome :: (Show a) => a -> Bool
-isPalindrome x = s == reverse s where s = show x
+palindrome :: (Show a) => a -> Bool
+palindrome x = let s = show x in s == reverse s
 
-euler4 = maximum [z | x<-[100..999], y<-[100..x], let z = x*y, isPalindrome z]
+euler4 = maximum [z | x<-[100..999], y<-[100..x], let z = x * y, palindrome z]
