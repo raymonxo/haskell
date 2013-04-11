@@ -7,14 +7,12 @@ factors :: Integer -> [Integer]
 factors 0 = []
 factors 1 = []
 factors n = factors' n 2
-
--- Helper that computes prime factors of n starting from x
-factors' :: Integer -> Integer -> [Integer]
-factors' n x
-	| x > limit =		[n]
-	| n `mod` x == 0 =	x : factors' (n `div` x) x
-	| otherwise =		factors' n (x + 1)
 	where
-		limit = floor . sqrt $ fromIntegral n
-
+		factors' n' x
+			| x > limit =		[n']
+			| n' `mod` x == 0 =	x : factors' (n' `div` x) x
+			| otherwise =		factors' n' (x + 1)
+			where
+				limit = floor . sqrt $ fromIntegral n'
+				
 euler3 = maximum $ factors 600851475143
