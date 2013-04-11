@@ -4,8 +4,6 @@
 --------------------------------------------------------------------------------
 -- Returns list of prime factors of n
 factors :: Integer -> [Integer]
-factors 0 = []
-factors 1 = []
 factors n = factors' n 2
   where
     factors' n' x
