@@ -3,6 +3,7 @@ module EulerCommon
 ( factors
 , fibonaccis
 , isPalindrome
+, leastCommonMultiple
 ) where
 
 -- List of prime factors of n
@@ -25,3 +26,7 @@ fibonaccis = 1 : 1 : fibonaccis' 1 1
 -- Is argument a palindrome?
 isPalindrome :: (Show a) => a -> Bool
 isPalindrome x = let s = show x in s == reverse s
+
+-- Least common multiple of all numbers in list
+leastCommonMultiple :: (Integral a) => [a] -> a
+leastCommonMultiple = foldl lcm 1

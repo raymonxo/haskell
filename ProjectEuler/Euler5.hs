@@ -24,4 +24,4 @@ euler5 = product $
 
 -- Solution #2
 -- The "better way".
-euler5' = foldl lcm 1 [1..20]
+euler5' = leastCommonMultiple [1..20]
