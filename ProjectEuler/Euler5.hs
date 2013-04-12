@@ -10,9 +10,8 @@ import EulerCommon
 -- functions - one that computes the lowest-common-denominator (same thing
 -- as the least-common-multiple) for two numbers and another that successively
 -- applies the first function to the numbers in the list.  Only after solving
--- this with my first solution did I realize that the least-common-multiple
--- function is provided in Haskell (called "lcm").  After realizing this
--- I implemented solution #2 (much better).
+-- this with solution #1 did I realize that the least-common-multiple
+-- function is provided in Haskell (called "lcm").  This led me to solution #2.
 
 -- Solution #1
 -- Compute prime factors of 1..20 then multiply the greatest power of each
