@@ -2,4 +2,4 @@
 -- Project Euler, Problem 6 (http://projecteuler.net/problem=6)
 -- Answer:  25164150
 --------------------------------------------------------------------------------
-euler6 = abs $ (sum $ map (^2) [1..100]) - (sum [1..100])^2
+euler6 = abs $ (sum $ map (^ 2) [1..100]) - (sum [1..100]) ^ 2
