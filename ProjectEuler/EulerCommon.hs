@@ -4,6 +4,7 @@ module EulerCommon
 , fibonaccis
 , isPalindrome
 , leastCommonMultiple
+, primes
 ) where
 
 -- List of prime factors of n
@@ -30,3 +31,16 @@ isPalindrome x = let s = show x in s == reverse s
 -- Least common multiple of all numbers in list
 leastCommonMultiple :: (Integral a) => [a] -> a
 leastCommonMultiple = foldl lcm 1
+
+-- List of all prime numbers
+primes :: [Integer]
+primes = 2 : primes' [2] 3
+    where
+        primes' ps x
+            | any (\p -> x `mod` p == 0) possibleFactors
+                = primes' ps (x + 2)
+            | otherwise
+                = x : primes' (ps ++ [x]) (x + 2)
+            where
+                possibleFactors
+                    = takeWhile (<= (floor . sqrt $ fromIntegral x)) ps
