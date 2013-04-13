@@ -40,6 +40,7 @@ primes = 2 : primes' [2] 3
             | any (\p -> x `mod` p == 0) possibleFactors
                 = primes' ps (x + 2)
             | otherwise
+                -- TODO replace use of ++ with constant time operation
                 = x : primes' (ps ++ [x]) (x + 2)
             where
                 possibleFactors
