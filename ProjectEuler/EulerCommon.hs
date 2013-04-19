@@ -23,7 +23,7 @@ fibonaccis = 1 : 1 : fibonaccis' 1 1
 
 -- Is argument a palindrome?
 isPalindrome :: (Show a) => a -> Bool
-isPalindrome x = let s = show x in  s == reverse s
+isPalindrome x = let s = show x in s == reverse s
 
 -- Least common multiple of all numbers in list
 leastCommonMultiple :: (Integral a) => [a] -> a
@@ -33,7 +33,7 @@ leastCommonMultiple = foldl lcm 1
 primes :: [Integer]
 primes = 2 : primes' [2] 3
     where primes' ps x
-        | any (\p -> x `mod` p == 0) possibleFactors = primes' ps (x + 2)
-        | otherwise = x : primes' (ps ++ [x]) (x + 2)
-        where possibleFactors = takeWhile (<= (floor . sqrt $ fromIntegral x))
-                                          ps
+        | any (\p -> x `mod` p == 0) ps'    = primes' ps (x + 2)
+        | otherwise                         = x : primes' (ps ++ [x]) (x + 2)
+        where ps' = takeWhile (<= (floor . sqrt $ fromIntegral x)) ps
+                                          
