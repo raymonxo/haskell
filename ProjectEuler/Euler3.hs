@@ -4,4 +4,4 @@
 --------------------------------------------------------------------------------
 import EulerCommon
 
-euler3 = maximum $ factors 600851475143
+euler3 = maximum $ primeFactors 600851475143
