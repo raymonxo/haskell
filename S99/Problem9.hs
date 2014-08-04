@@ -14,7 +14,8 @@
 --                                List('e, 'e, 'e, 'e))
 --------------------------------------------------------------------------------
 -- Same as built-in function 'group'
-pack :: Eq a => [a] -> [[a]]
-pack []        = []
-pack all@(x:_) = packed : pack rest
-    where (packed, rest) = span (==x) all
+pack xs = foldr (\x z -> if z == [] || x /= head (head z)
+                         then [x]:z
+                         else (x:head z):tail z)
+                []
+                xs
