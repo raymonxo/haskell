@@ -14,8 +14,7 @@
 --                                List('e, 'e, 'e, 'e))
 --------------------------------------------------------------------------------
 -- Same as built-in function 'group'
-pack xs = foldr (\x z -> if z == [] || x /= head (head z)
-                         then [x]:z
-                         else (x:head z):tail z)
+pack xs = foldr (\x z -> if z == [] || x /= head (head z) then [x] : z
+                         else (x : head z) : tail z)
                 []
                 xs
