@@ -15,7 +15,6 @@
 --------------------------------------------------------------------------------
 -- Same as built-in function 'group'
 pack xs =
-<<<<<<< HEAD
   foldr (\x z ->
     case z of
       []                   -> [x]:z
@@ -23,11 +22,3 @@ pack xs =
       (xs:z')              -> (x:xs):z')
   []
   xs
-=======
-    foldr (\x z ->
-        if z == [] || x /= head (head z)
-        then [x] : z
-        else (x : head z) : tail z)
-    []
-    xs
->>>>>>> 937d86432ca9b7ec8224d5487f6b25296f5073cf
