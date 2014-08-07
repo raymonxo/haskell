@@ -17,7 +17,7 @@
 pack xs =
   foldr (\x z ->
     case z of
-      []                   -> [x]:[]
+      []                   -> [[x]]
       ((x':_):_) | x /= x' -> [x]:z
       (xs:z')              -> (x:xs):z')
   []
