@@ -12,22 +12,20 @@
 --                              'e, 'e))
 --   res0: List[Any] = List((4,'a), 'b, (2,'c), (2,'a), 'd, (4,'e))
 --------------------------------------------------------------------------------
-data SingleOrMultiple a = Single a
-                        | Multiple [a]
-                          deriving (Show)
+import Data.Either
+import Data.List (group)
 
-encodeModified :: (Eq a) => [a] -> [SingleOrMultiple a]
-encodeModified = 
-  foldr (\x zs ->
-      case zs of
-        (Single s) : zs'          | x == s -> Multiple [x, s] : zs'
-        (Multiple (m : ms)) : zs' | x == m -> Multiple (x : m : ms) : zs'
-        otherwise                          -> Single x : zs
-    )
-    []
+encodeModified :: (Eq a) => [a] -> [Either a (Int, a)]
+encodeModified =
+  map (\ys -> 
+    case ys of
+      y:[] -> Left y 
+      y:_  -> Right (length ys, y)
+  )
+  . group
 
 -------------------------------------------------------------------------------
 -- Sample run:
--- ghci> encodeModified [1,1,1,1,2,3,3,3,4,5,5]
--- [Multiple [1,1,1,1],Single 2,Multiple [3,3,3],Single 4,Multiple [5,5]]
+--   ghci> encodeModified ['a','a','a','a','b','c','c','a','a']
+--   [Right (4,'a'),Left 'b',Right (2,'c'),Right (2,'a')]
 -------------------------------------------------------------------------------
