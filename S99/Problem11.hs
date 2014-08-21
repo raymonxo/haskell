@@ -17,10 +17,10 @@ import Data.List (group)
 
 encodeModified :: (Eq a) => [a] -> [Either a (Int, a)]
 encodeModified =
-  map (\ys -> 
-    case ys of
-      y:[] -> Left y 
-      y:_  -> Right (length ys, y)
+  map (\xs -> 
+    case xs of
+      x:[] -> Left x
+      x:_  -> Right (length xs, x)
   )
   . group
 
