@@ -12,7 +12,9 @@
 --                              'e, 'e))
 --   res0: List[Any] = List((4,'a), 'b, (2,'c), (2,'a), 'd, (4,'e))
 --------------------------------------------------------------------------------
-data SingleOrMultiple a = Single a | Multiple [a] deriving (Show)
+data SingleOrMultiple a = Single a
+                        | Multiple [a]
+                          deriving (Show)
 
 encodeModified :: (Eq a) => [a] -> [SingleOrMultiple a]
 encodeModified = 
