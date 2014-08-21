@@ -18,7 +18,7 @@ encodeModified :: (Eq a) => [a] -> [SingleOrMultiple a]
 encodeModified = 
   foldr (\x zs ->
     case zs of
-      (Single s) : zs' | x == s          -> Multiple [x, s] : zs'
+      (Single s) : zs'          | x == s -> Multiple [x, s] : zs'
       (Multiple (m : ms)) : zs' | x == m -> Multiple (x : m : ms) : zs'
       otherwise                          -> Single x : zs
     )
