@@ -17,8 +17,8 @@ import Data.List (group)
 
 encodeModified :: (Eq a) => [a] -> [Either a (Int, a)]
 encodeModified = map encodeOne . group
-                 where encodeOne (x:[])    = Left x
-                       encodeOne all@(x:_) = Right (length all, x)
+                 where encodeOne (x:[])   = Left x
+                       encodeOne xs@(x:_) = Right (length xs, x)
 
 -------------------------------------------------------------------------------
 -- Sample run:
