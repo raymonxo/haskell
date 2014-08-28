@@ -12,8 +12,8 @@
 --                                  (4,'e))
 --------------------------------------------------------------------------------
 encodeDirect :: (Eq a) => [a] -> [(Int, a)]
-encodeDirect = foldr processOne []
-               where processOne x []              = [(1, x)]
-                     processOne x acc@((n, y):ys)
-                       | x == y                   = (n + 1, x):ys
-                       | otherwise                = (1, x):acc
+encodeDirect = foldr encodeOne []
+               where encodeOne x []                   = [(1, x)]
+                     encodeOne x acc@((n, y):accTail)
+                       | x == y                       = (n + 1, x):accTail
+                       | otherwise                    = (1, x):acc
