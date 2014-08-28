@@ -7,7 +7,8 @@
 --     scala> flatten(List(List(1, 1), 2, List(3, List(5, 8))))
 --     res0: List[Any] = List(1, 1, 2, 3, 5, 8)
 --------------------------------------------------------------------------------
-data NestedList a = Elem a | List [NestedList a]
+data NestedList a = Elem a
+                  | List [NestedList a]
 
 flatten :: NestedList a -> [a]
 flatten (Elem a)      = [a]
