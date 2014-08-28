@@ -18,4 +18,4 @@ import Data.List (group)
 
 encode :: (Eq a) => [a] -> [(Int, a)]
 encode = map encodeOne . group
-         where encodeOne all@(x:_) = (length all, x)
+         where encodeOne xs@(x:_) = (length xs, x)
