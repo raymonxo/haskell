@@ -7,5 +7,8 @@
 --     scala> penultimate(List(1, 1, 2, 3, 5, 8))
 --     res0: Int = 5
 --------------------------------------------------------------------------------
-penultimate (x:_:[]) = x
+penultimate :: [a] -> Maybe a
+penultimate []       = Nothing
+penultimate (_:[])   = Nothing
+penultimate (x:_:[]) = Just x
 penultimate (_:xs)   = penultimate xs
