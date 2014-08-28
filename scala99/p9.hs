@@ -14,11 +14,10 @@
 --                                List('e, 'e, 'e, 'e))
 --------------------------------------------------------------------------------
 -- Same as built-in function 'group'
-pack xs =
-  foldr (\x z ->
-    case z of
-      []                   -> [[x]]
-      ((x':_):_) | x /= x' -> [x]:z
-      (xs:z')              -> (x:xs):z')
-  []
-  xs
+pack :: (Eq a) => [a] -> [[a]]
+
+pack = foldr packOne []
+       where packOne x []                           = [[x]]
+             packOne x acc@(accHead@(y:_):accTail)
+               | x == y                             = (x:accHead):accTail
+               | otherwise                          = [x]:acc
