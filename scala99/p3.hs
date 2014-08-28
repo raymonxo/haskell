@@ -9,5 +9,7 @@
 --     scala> nth(2, List(1, 1, 2, 3, 5, 8))
 --     res0: Int = 2
 --------------------------------------------------------------------------------
-nth 0 (x:_)  = x
-nth n (_:xs) = nth (pred n) xs
+nth :: Int -> [a] -> Maybe a
+nth _ []     = Nothing
+nth 0 (x:_)  = Just x
+nth n (_:xs) = nth (n - 1) xs
