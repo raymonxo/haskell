@@ -16,13 +16,9 @@ import Data.Either
 import Data.List (group)
 
 encodeModified :: (Eq a) => [a] -> [Either a (Int, a)]
-encodeModified =
-  map (\xs -> 
-    case xs of
-      x:[] -> Left x
-      x:_  -> Right (length xs, x)
-  )
-  . group
+encodeModified = map encodeOne . group
+                 where encodeOne (x:[])    = Left x
+                       encodeOne all@(x:_) = Right (length all, x)
 
 -------------------------------------------------------------------------------
 -- Sample run:
