@@ -12,7 +12,6 @@
 --                              'e, 'e))
 --   res0: List[Any] = List((4,'a), 'b, (2,'c), (2,'a), 'd, (4,'e))
 --------------------------------------------------------------------------------
-import Data.Either
 import Data.List (group)
 
 encodeModified :: (Eq a) => [a] -> [Either a (Int, a)]
