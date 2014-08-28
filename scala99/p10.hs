@@ -16,4 +16,6 @@
 --------------------------------------------------------------------------------
 import Data.List (group)
 
-encode xs = map (\all@(x:_) -> (length all, x)) $ group xs
+encode :: (Eq a) => [a] -> [(Int, a)]
+encode = map encodeOne . group
+         where encodeOne all@(x:_) = (length all, x)
