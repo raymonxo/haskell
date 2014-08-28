@@ -7,4 +7,5 @@
 --     scala> isPalindrome(List(1, 2, 3, 2, 1))
 --     res0: Boolean = true
 --------------------------------------------------------------------------------
+isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome xs = xs == reverse xs
