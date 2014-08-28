@@ -6,4 +6,4 @@
 -- res0: List[Symbol] = List('a, 'a, 'b, 'b, 'c, 'c, 'c, 'c, 'd, 'd)
 --------------------------------------------------------------------------------
 duplicate :: [a] -> [a]
-duplicate = concatMap (replicate 2)
+duplicate = concatMap $ replicate 2
