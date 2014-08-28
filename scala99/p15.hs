@@ -6,4 +6,4 @@
 --                           'd, 'd)
 --------------------------------------------------------------------------------
 duplicateN :: Int -> [a] -> [a]
-duplicateN n = concat . map (replicate n)
+duplicateN n = concatMap (replicate n)
