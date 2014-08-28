@@ -15,7 +15,6 @@
 --------------------------------------------------------------------------------
 -- Same as built-in function 'group'
 pack :: (Eq a) => [a] -> [[a]]
-
 pack = foldr packOne []
        where packOne x []                           = [[x]]
              packOne x acc@(accHead@(y:_):accTail)
