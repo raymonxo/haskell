@@ -12,4 +12,7 @@
 --                          'e, 'e))
 --     res0: List[Symbol] = List('a, 'b, 'c, 'a, 'd, 'e)
 --------------------------------------------------------------------------------
-compress xs = foldr (\x z -> if z == [] || x /= head z then x:z else z) [] xs
+import Data.List (group)
+
+compress :: (Eq a) => [a] -> [a]
+compress = map head . group
