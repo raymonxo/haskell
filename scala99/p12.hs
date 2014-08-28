@@ -10,5 +10,5 @@
 --                           'e)
 --------------------------------------------------------------------------------
 decode :: [(Int, a)] -> [a]
-decode = concat . map decodeOne
+decode = concatMap decodeOne
          where decodeOne (n, x) = replicate n x
