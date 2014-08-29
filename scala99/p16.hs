@@ -5,4 +5,4 @@
 -- res0: List[Symbol] = List('a, 'b, 'd, 'e, 'g, 'h, 'j, 'k)
 --------------------------------------------------------------------------------
 drop' :: Int -> [a] -> [a]
-drop' n = map (\(_, x) -> x) . filter (\(i, _) -> i `mod` n /= 0) . zip [1..]
+drop' n = map snd . filter (\(i, _) -> i `mod` n /= 0) . zip [1..]
