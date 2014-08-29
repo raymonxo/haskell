@@ -8,8 +8,7 @@
 -- res1: List[Symbol] = List('j, 'k, 'a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i)
 --------------------------------------------------------------------------------
 rotate' :: Int -> [a] -> [a]
+rotate' _ [] = []
 rotate' n xs = drop n' xs ++ take n' xs
-               where n'  = if len == 0
-                           then 0
-                           else (n `rem` len) + if n < 0 then len else 0
+               where n'  = (n `rem` len) + if n < 0 then len else 0
                      len = length xs
