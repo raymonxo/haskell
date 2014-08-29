@@ -9,5 +9,7 @@
 --------------------------------------------------------------------------------
 rotate' :: Int -> [a] -> [a]
 rotate' n xs = drop n' xs ++ take n' xs
-               where n'  = (n `rem` len) + if n < 0 then len else 0
+               where n'  = if len == 0
+                           then 0
+                           else (n `rem` len) + if n < 0 then len else 0
                      len = length xs
