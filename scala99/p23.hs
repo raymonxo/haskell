@@ -7,6 +7,11 @@
 --------------------------------------------------------------------------------
 import System.Random
 
+-- Steps:
+--    1. Write function to randomly select one element from a list
+--    2. Write function to randomely select multiple elements from a list
+--    3. Profit
+
 randomSelect :: Int -> [a] -> IO [a]
 
 
