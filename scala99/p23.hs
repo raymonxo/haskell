@@ -7,17 +7,18 @@
 --------------------------------------------------------------------------------
 import System.Random
 
--- Steps:
---    1. Write function to randomly select one element from a list
---    2. Write function to randomely select multiple elements from a list
---    3. Profit
+-- Solution to p23
+removeRandom1 :: [a] -> IO [a]
+removeRandom1 xs = do
+                   index <- getStdRandom $ randomR (0, length xs - 1)
+                   return $ removeAt index xs
 
-randomSelect :: Int -> [a] -> IO [a]
-
+removeRandomN :: Int -> [a] -> IO [a]
+removeRandomN n xs | n <= 0    = return xs
+                   | otherwise = do
+                                 xs' <- removeRandom1 xs
+                                 removeRandomN (n - 1) xs'
 
 -- Solution to p20
-removeAt :: Int -> [a] -> ([a], Maybe a)
-removeAt n xs | n < 0     = (xs, Nothing)
-              | otherwise = case splitAt n xs of
-                              (ys, [])   -> (ys, Nothing)
-                              (ys, z:zs) -> (ys ++ zs, Just z)
+removeAt :: Int -> [a] -> [a]
+removeAt n xs = (take n xs) ++ (drop (n + 1) xs)
