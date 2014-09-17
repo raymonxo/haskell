@@ -15,7 +15,7 @@ extractRandom1 xs = do
                     index <- getStdRandom $ randomR (0, length xs -1)
                     return (xs !! index, removeAt index xs)
 
--- Randomly extract n element from a list, returning a pair containing a list
+-- Randomly extract n elements from a list, returning a pair containing a list
 -- of the extracted elements and a list of elements that were not extracted.
 extractRandomN :: Int -> [a] -> IO ([a], [a])
 extractRandomN n xs = extractRandomN' n [] xs
