@@ -21,10 +21,9 @@ extractRandomN :: Int -> [a] -> IO ([a], [a])
 extractRandomN n xs = extractRandomN' n [] xs
   where extractRandomN' n extracted remaining
           | n <= 0    = return (extracted, remaining)
-          | otherwise =
-              do
-              (x, xs') <- extractRandom1 remaining
-              extractRandomN' (n - 1) (x:extracted) xs'
+          | otherwise = do
+                        (x, xs') <- extractRandom1 remaining
+                        extractRandomN' (n - 1) (x:extracted) xs'
 
 -- Solution to p20
 removeAt :: Int -> [a] -> [a]
