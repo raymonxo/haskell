@@ -8,16 +8,23 @@
 import System.Random
 
 -- Solution to p23
-removeRandom1 :: [a] -> IO [a]
-removeRandom1 xs = do
-                   index <- getStdRandom $ randomR (0, length xs - 1)
-                   return $ removeAt index xs
+-- Randomly extract one element from a list, returning a pair containing the
+-- extracted element and a list of the elements that were not extracted.
+extractRandom1 :: [a] -> IO (a, [a])
+extractRandom1 xs = do
+                    index <- getStdRandom $ randomR (0, length xs -1)
+                    return (xs !! index, removeAt index xs)
 
-removeRandomN :: Int -> [a] -> IO [a]
-removeRandomN n xs | n <= 0    = return xs
-                   | otherwise = do
-                                 xs' <- removeRandom1 xs
-                                 removeRandomN (n - 1) xs'
+-- Randomly extract n element from a list, returning a pair containing a list
+-- of the extracted elements and a list of elements that were not extracted.
+extractRandomN :: Int -> [a] -> IO ([a], [a])
+extractRandomN n xs = extractRandomN' n [] xs
+  where extractRandomN' n extracted remaining
+          | n <= 0    = return (extracted, remaining)
+          | otherwise =
+              do
+              (x, xs') <- extractRandom1 remaining
+              extractRandomN' (n - 1) (x:extracted) xs'
 
 -- Solution to p20
 removeAt :: Int -> [a] -> [a]
