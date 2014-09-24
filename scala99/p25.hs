@@ -9,10 +9,10 @@
 import System.Random
 
 -- Solution to p25
-permuteRandom :: [a] -> IO [a]
-permuteRandom xs = do
-                   ex <- extractRandomN (length xs) xs
-                   return $ fst ex
+permuteRandomly :: [a] -> IO [a]
+permuteRandomly xs = do
+                     ex <- extractRandomN (length xs) xs
+                     return $ fst ex
 
 -- Solution to p23
 -- Randomly extract one element from a list, returning a pair containing the
