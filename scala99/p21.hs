@@ -5,4 +5,5 @@
 -- res0: List[Symbol] = List('a, 'new, 'b, 'c, 'd)
 --------------------------------------------------------------------------------
 insertAt :: a -> Int -> [a] -> [a]
-insertAt x n xs = (take n xs) ++ [x] ++ (drop n xs)
+insertAt x n xs = left ++ [x] ++ right
+                  where (left, right) = splitAt n xs
